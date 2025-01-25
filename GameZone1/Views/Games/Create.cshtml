@@ -1,0 +1,56 @@
+﻿@model CreateGameFormVM
+
+
+<h5> 
+	<i class="bi bi-plus-circle"></i>
+	Add a new game 
+</h5>
+
+<form asp-controller="Games" enctype="multipart/form-data">
+	<div class="row">
+		<div class="col-md-6 ">
+			<div class="form-group">
+				<label class="form-label mt-4  border-primary" asp-for="Name"></label>
+				<input type="text" class="form-control text-primary-emphasis" asp-for=Name placeholder="Enter game's name">
+				<span asp-validation-for="Name" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label class="form-label mt-4  border-primary" asp-for="CategoryId"></label>
+				<select class="form-select text-primary-emphasis" asp-for="CategoryId" asp-items="Model.Categories">
+					<option>--Select a Category--</option>
+				</select>
+				<span asp-validation-for="CategoryId" class="text-danger"></span>
+			</div>
+			
+			<div class="form-group">
+				<label class="form-label mt-4 border-primary" asp-for="SelectedDevices"></label>
+				<select class="form-select text-primary-emphasis" asp-for="SelectedDevices" asp-items="Model.Devices">
+					<option>--Select a device--</option>
+				</select>
+				<span asp-validation-for="SelectedDevices" class="text-danger"></span>
+			</div>
+
+			<div class="form-group">
+				<label class="form-label mt-4 border-primary " asp-for="Description"></label>
+				<textarea class="form-control text-primary-emphasis" asp-for="Description" placeholder="Description"></textarea>
+				<span asp-validation-for="Description" class="text-danger"></span>
+			</div>
+
+			<div class="form-group">
+				<label class="form-label mt-4  border-primary" asp-for="Cover"></label>
+				<input type="file" class="form-control link-danger text-primary-emphasis border-primary" asp-for=Cover placeholder="Upload game's Cover">
+				<small class="form-text text-muted">Only .jpg, .jpeg, .png files are allowed with max size 1MB.    </small>
+				<span asp-validation-for="Cover" class="text-danger d-block"></span>
+			</div>
+
+		<button type="submit" class="btn btn-primary btn-lg mt-4">Save</button>
+		</div>
+		<div class="col-md-6">
+
+		</div>
+
+	</div>
+
+
+
+</form>

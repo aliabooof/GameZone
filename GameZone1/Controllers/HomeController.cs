@@ -1,8 +1,8 @@
 using System.Diagnostics;
-using GameZone1.Models;
+using GameZone.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GameZone1.Controllers
+namespace GameZone.Controllers
 {
     public class HomeController : Controller
     {
@@ -18,10 +18,7 @@ namespace GameZone1.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+       
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
