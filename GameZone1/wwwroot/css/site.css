@@ -83,3 +83,11 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/* start custom css */
+.cover-preview{
+    max-height:     500px;
+    border-radius:    8px;
+}
+
+/* end   custom css */

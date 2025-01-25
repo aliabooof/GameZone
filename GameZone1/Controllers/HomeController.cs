@@ -1,16 +1,17 @@
 using System.Diagnostics;
 using GameZone.Models;
+using GameZone1.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GameZone.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IGameService _gameService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IGameService gameService)
         {
-            _logger = logger;
+            _gameService = gameService;
         }
 
         public IActionResult Index()

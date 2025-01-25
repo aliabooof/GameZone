@@ -16,16 +16,18 @@
 			</div>
 			<div class="form-group">
 				<label class="form-label mt-4  border-primary" asp-for="CategoryId"></label>
-				<select class="form-select text-primary-emphasis" asp-for="CategoryId" asp-items="Model.Categories">
-					<option value="" >--Select a Category--</option>
+				<select class="form-select text-primary-emphasis" asp-for="CategoryId" asp-items="Model.Categories"
+					data-placeholder="select a category" data-minimum-results-for-search="Infinity">
+					<option value="" ></option>
 				</select>
 				<span asp-validation-for="CategoryId" class="text-danger"></span>
 			</div>
 			
 			<div class="form-group">
 				<label class="form-label mt-4 border-primary" asp-for="SelectedDevices"></label>
-				<select class="form-select text-primary-emphasis" asp-for="SelectedDevices" asp-items="Model.Devices">
-					<option value="">--Select a device--</option>
+				<select class="form-select text-primary-emphasis" asp-for="SelectedDevices" asp-items="Model.Devices"
+						data-placeholder="select a category">
+					<option value=""></option>
 				</select>
 				<span asp-validation-for="SelectedDevices" class="text-danger"></span>
 			</div>
@@ -38,22 +40,29 @@
 
 			<div class="form-group">
 				<label class="form-label mt-4  border-primary" asp-for="Cover"></label>
-				<input type="file" class="form-control link-danger text-primary-emphasis border-primary"  asp-for=Cover placeholder="Upload game's Cover">
-				<small class="form-text text-muted">Only .jpg, .jpeg, .png files are allowed with max size 1MB.</small>
+				<input type="file" class="form-control link-danger text-primary-emphasis border-primary"
+					asp-for=Cover placeholder="Upload game's Cover"
+					data-rule-extension = "@FileSettings.AllowedExtensions.Replace(".",string.Empty)"
+					data-msg-extension = "Not allowed Extension"
+					data-rule-fileSize="@FileSettings.MaxFileSizeInBytes"
+					data-msg-fileSize="Maximum allowed Size is (@FileSettings.MaxFileSizeInMB) MB.">
+				<small class="form-text text-muted">Only @FileSettings.AllowedExtensions files are allowed with max size @FileSettings.MaxFileSizeInMB MB.</small>
 				<span asp-validation-for="Cover" class="text-danger d-block"></span>
 			</div>
 
 		<button type="submit" class="btn btn-primary btn-lg mt-4">Save</button>
 		</div>
-		<div class="col-md-6">
-
+		<div class="col-md-6 d-flex justify-content-center pt-4 overflow-hidden">  
+			<img  class="cover-preview d-none" alt="Cover" />
 		</div>
 
 	</div>
-
-
-
 </form>
+ 
 @section Scripts{
 	<partial name="_ValidationScriptsPartial" />
-}
+	<script src="~/js/filesize-validator.js" asp-appedn-version="true"></script>
+	<script src="~/js/game-form.js" asp-appedn-version="true"></script>
+}	
+
+		

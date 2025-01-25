@@ -1,4 +1,5 @@
 ﻿
+using GameZone1.Attributes;
 using System.Runtime.CompilerServices;
 
 namespace GameZone.ViewModels
@@ -18,6 +19,8 @@ namespace GameZone.ViewModels
         [MaxLength(2500)]
         public string Description { get; set; } = string.Empty;
         /*[Extension]*/ //not works well with MVC
+        [AllowedExtensions(FileSettings.AllowedExtensions)]
+        [MaxFileSize(FileSettings.MaxFileSizeInBytes)]
         public IFormFile Cover { get; set; } = default!;
     }
 }
