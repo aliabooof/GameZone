@@ -16,7 +16,9 @@ namespace GameZone.Services
             {
                 Value = d.Id.ToString(),
                 Text = d.Name
-            }).OrderBy(d => d.Text).ToList();
+            }).OrderBy(d => d.Text)
+            .AsNoTracking()
+            .ToList();
         }
     }
 }

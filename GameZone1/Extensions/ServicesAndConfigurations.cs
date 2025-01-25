@@ -1,5 +1,7 @@
 ﻿
 
+using GameZone1.Services;
+
 namespace GameZone.Extensions
 {
     public static class ServicesAndConfigurations
@@ -20,6 +22,7 @@ namespace GameZone.Extensions
             services.AddScoped<ICategoriesService, CategoriesService>();
 
             services.AddScoped<IDevicesService, DevicesService>();
+            services.AddScoped<IGameService, GameService>();
 
             return services;
         }
