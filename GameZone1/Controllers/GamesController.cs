@@ -19,15 +19,22 @@ namespace GameZone.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            var games = _gameService.GetAll();
+            return View(games);
+        }
+
+        public IActionResult Details(int id)
+        {
+            var game = _gameService.GetById(id);
+            if (game == null)
+            {
+                return NotFound();
+            }
+            return View(game);
         }
 
         public IActionResult Create()
         {
-
-            /*if (_dbContext.Categories == null)
-                throw new Exception("Categories collection is null.");*/
-
             CreateGameFormVM viewModel = new CreateGameFormVM()
             {
                 Categories = _categoriesService.GetSelectList(),

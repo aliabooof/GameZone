@@ -3,6 +3,7 @@
     public interface IGameService
     {
         IEnumerable<Game> GetAll();
+        Game? GetById(int id);
         Task Create(CreateGameFormVM Model);
     }
 }
