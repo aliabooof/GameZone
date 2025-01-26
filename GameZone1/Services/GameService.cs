@@ -1,4 +1,5 @@
 ﻿
+
 namespace GameZone1.Services
 {
     public class GameService : IGameService
@@ -13,6 +14,9 @@ namespace GameZone1.Services
             _webHostEnvironment = webHostEnvironment;
             imagePath = $"{_webHostEnvironment.WebRootPath}{FileSettings.ImagesPath}";
         }
+        public IEnumerable<Game> GetAll()
+              => _context.Games.AsNoTracking().ToList();
+    
         public async Task Create(CreateGameFormVM model)
         {
             // {Path.GetFileNameWithoutExtension(game.Cover.FileName)}{Path.GetExtension(game.Cover.FileName)} = {Path.GetFileName(game.Cover.FileName)}
@@ -34,5 +38,6 @@ namespace GameZone1.Services
             _context.Add(game);
             _context.SaveChanges();
         }
+
     }
 }

@@ -2,6 +2,7 @@
 {
     public interface IGameService
     {
+        IEnumerable<Game> GetAll();
         Task Create(CreateGameFormVM Model);
     }
 }
